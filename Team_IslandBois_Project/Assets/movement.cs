@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class movement : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         float speed = g.getSpeed();
-        transform.position += Vector3.down * (speed * Time.deltaTime);
+        transform.position += Vector3.left * (speed * Time.deltaTime);
     }
+
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
@@ -11,23 +12,31 @@ public class Game : MonoBehaviour{
 
     public float speed = 5;
 
-    public float minSpawnTime = 1;
-    public float maxSpawnTime = 4;
+    public float minSpawnTime = 0.5f;
+    public float maxSpawnTime = 2;
+
+    public float minCollectableSpawnTime;
     
     private bool[] collected;
+    private double[] lastSpawn;
 
     private double timer;
+    private double collectableTimer;
     private double waitTime;
 
     // Start is called before the first frame update
     void Start(){
-        collected = new bool[5];
+        collected = new bool[collectables.Length];
         waitTime = 1;
     }
 
     // Update is called once per frame
     void Update(){
         timer += Time.deltaTime;
+        collectableTimer += Time.deltaTime;
+        if (collectableTimer > minCollectableSpawnTime){
+            collectableTimer = minCollectableSpawnTime + 1;
+        }
         if (timer > waitTime){
             timer -= waitTime;
             waitTime = Random.Range(minSpawnTime, maxSpawnTime);
@@ -36,18 +45,20 @@ public class Game : MonoBehaviour{
     }
 
     void spawn(){
-        if (Random.Range(0f, 100f) < collectableSpawnPct){
+        if (Random.Range(0f, 100f) < collectableSpawnPct && collectableTimer >= minCollectableSpawnTime){
+            collectableTimer = 0;
             //spawn collectable
-            int obj = Random.Range(0, collectables.Length - 1);
+            int obj = Random.Range(0, collectables.Length);
+            while(collected[obj]) obj = Random.Range(0, collectables.Length);
             float pos = Random.Range(-4f, 4f);
-            GameObject clone = Instantiate(collectables[obj], new Vector3(pos, 6, 0), transform.rotation);
-            Destroy(clone, 2);
+            GameObject clone = Instantiate(collectables[obj], new Vector3(12, pos, 0), transform.rotation);
+            Destroy(clone, 5);
         } else{
             //spawn obstacle
-            int obj = Random.Range(0, obstacles.Length - 1);
+            int obj = Random.Range(0, obstacles.Length);
             float pos = Random.Range(-4f, 4f);
-            GameObject clone = Instantiate(obstacles[obj], new Vector3(pos, 6, 0), transform.rotation);
-            Destroy(clone, 2);
+            GameObject clone = Instantiate(obstacles[obj], new Vector3(12, pos, 0), transform.rotation);
+            Destroy(clone, 5);
         }
     }
 
@@ -57,5 +68,11 @@ public class Game : MonoBehaviour{
 
     public void collect(int i){
         collected[i] = true;
+
+        for (int j = 0; j < collected.Length; j++){
+            if (!collected[j]) return;
+        }
+
+        SceneManager.LoadScene("GameWon");
     }
 }
