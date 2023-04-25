@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
-        transform.position = new Vector3(-8.5f, 0, 0);
+        transform.position = new Vector3(-8.0f, 0, 0);
     }
 
     // Update is called once per frame
