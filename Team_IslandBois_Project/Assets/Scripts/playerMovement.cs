@@ -13,9 +13,12 @@ public class playerMovement : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow)){
+        if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < 3.75)
+        {
             transform.position += Vector3.up * (speed * Time.deltaTime);
-        }else if (Input.GetKey(KeyCode.DownArrow)){
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > -3.75)
+        {
             transform.position += Vector3.down * (speed * Time.deltaTime);
         }
     }
