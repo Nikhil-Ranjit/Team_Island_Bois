@@ -1,7 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
+
+
 
 public class Game : MonoBehaviour{
 
@@ -24,10 +27,15 @@ public class Game : MonoBehaviour{
     private double collectableTimer;
     private double waitTime;
 
+    public Text instruct;
+    public Text title;
+
     // Start is called before the first frame update
     void Start(){
+
         collected = new bool[collectables.Length];
         waitTime = 1;
+        
     }
 
     // Update is called once per frame
@@ -75,4 +83,6 @@ public class Game : MonoBehaviour{
 
         SceneManager.LoadScene("GameWon");
     }
+
+   
 }

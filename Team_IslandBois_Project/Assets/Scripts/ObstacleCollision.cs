@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ObstacleCollision : MonoBehaviour
 {
+    public Screens screensScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        screensScript = GameObject.FindGameObjectWithTag("sc").GetComponent<Screens>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class ObstacleCollision : MonoBehaviour
         Debug.Log("collision");
         if (col.CompareTag("Player")){
             GetComponent<SpriteRenderer>().enabled = false;
-            SceneManager.LoadScene("GameLost");
+            screensScript.setGameOverScreen();
         }
     }
 }
