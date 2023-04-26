@@ -1469,7 +1469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect all collectibles to win
+  m_Text: Collect all collectibles to escape the island
 --- !u!222 &1708616332
 CanvasRenderer:
   m_ObjectHideFlags: 0
