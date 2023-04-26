@@ -12,13 +12,12 @@ public class Screens : MonoBehaviour
 
     public void Start()
     {
-        text1.CrossFadeAlpha(0, 7, true);
-        text2.CrossFadeAlpha(0, 7, true);
+   
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(0);
     }
 
     public void setGameOverScreen()
