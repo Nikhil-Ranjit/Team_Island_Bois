@@ -45,7 +45,7 @@ public class Game : MonoBehaviour{
         if (collectableTimer > minCollectableSpawnTime){
             collectableTimer = minCollectableSpawnTime + 1;
         }
-        if (timer > waitTime){
+        if (timer > waitTime && playerMovement.isAlive){
             timer -= waitTime;
             waitTime = Random.Range(minSpawnTime, maxSpawnTime);
             spawn();

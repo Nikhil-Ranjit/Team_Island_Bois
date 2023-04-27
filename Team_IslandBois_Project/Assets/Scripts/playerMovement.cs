@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour{
 
     public float speed;
     public Screens screensScript;
-    private bool isAlive = true;
+    public static bool isAlive = true;
     float timer = 0;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class playerMovement : MonoBehaviour{
                 transform.position += Vector3.down * (speed * Time.deltaTime);
             }
         }
-        if (timer < 5)
+        if (timer < 3)
         {
             timer += Time.deltaTime;
         }
@@ -44,9 +44,12 @@ public class playerMovement : MonoBehaviour{
     private void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("collision");
-        GetComponent<SpriteRenderer>().enabled = false;
-        screensScript.setGameOverScreen();
-        isAlive = false;
+        if (col.gameObject.CompareTag("Obstacle"))
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            screensScript.setGameOverScreen();
+            isAlive = false;
+        }    
         }
     }
 
