@@ -1041,6 +1041,7 @@ MonoBehaviour:
   text1: {fileID: 1708616331}
   text2: {fileID: 275127616}
   gameOverScreen: {fileID: 819202135}
+  startScreen: {fileID: 1858935215}
 --- !u!4 &806990343
 Transform:
   m_ObjectHideFlags: 0
@@ -1174,6 +1175,7 @@ MonoBehaviour:
   text1: {fileID: 0}
   text2: {fileID: 0}
   gameOverScreen: {fileID: 0}
+  startScreen: {fileID: 0}
 --- !u!1 &911376259
 GameObject:
   m_ObjectHideFlags: 0

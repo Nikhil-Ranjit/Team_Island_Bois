@@ -9,10 +9,16 @@ public class Screens : MonoBehaviour
     public Text text1;
     public Text text2;
     public GameObject gameOverScreen;
+    public GameObject startScreen;
 
     public void Start()
     {
 
+    }
+
+    public void setStartScreen()
+    {
+        startScreen.SetActive(false);
     }
 
     public void Restart()

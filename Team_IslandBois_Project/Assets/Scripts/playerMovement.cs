@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour{
     public float speed;
     public Screens screensScript;
     private bool isAlive = true;
+    float timer = 0;
 
     // Start is called before the first frame update
     void Start(){
@@ -29,6 +30,15 @@ public class playerMovement : MonoBehaviour{
                 transform.position += Vector3.down * (speed * Time.deltaTime);
             }
         }
+        if (timer < 5)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            screensScript.setStartScreen();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
