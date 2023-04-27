@@ -13,7 +13,7 @@ public class Game : MonoBehaviour{
 
     public GameObject[] obstacles;
 
-    public float speed = 5;
+    public float speed = 6;
 
     public float minSpawnTime = 0.5f;
     public float maxSpawnTime = 2;
@@ -27,6 +27,8 @@ public class Game : MonoBehaviour{
     private double collectableTimer;
     private double waitTime;
 
+    public float speedUpConstant = 0.1f;
+
     public Text instruct;
     public Text title;
 
@@ -34,7 +36,7 @@ public class Game : MonoBehaviour{
     void Start(){
 
         collected = new bool[collectables.Length];
-        waitTime = 1;
+        waitTime = 2;
         
     }
 
@@ -50,6 +52,10 @@ public class Game : MonoBehaviour{
             waitTime = Random.Range(minSpawnTime, maxSpawnTime);
             spawn();
         }
+
+        speed += speedUpConstant * Time.deltaTime;
+        minSpawnTime = 0.75f / speed * 6;
+        maxSpawnTime = 2f / speed * 6;
     }
 
     void spawn(){
@@ -84,5 +90,9 @@ public class Game : MonoBehaviour{
         SceneManager.LoadScene("GameWon");
     }
 
-   
+    public void resetSpeed(){
+        speed = 6;
+        collected = new bool[collectables.Length];
+        waitTime = 2;
+    }
 }

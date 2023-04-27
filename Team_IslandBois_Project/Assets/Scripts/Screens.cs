@@ -24,6 +24,8 @@ public class Screens : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(0);
+        playerMovement.isAlive = true;
+        GameObject.FindWithTag("GameController").GetComponent<Game>().resetSpeed();
     }
 
     public void setGameOverScreen()

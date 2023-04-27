@@ -1803,6 +1803,7 @@ MonoBehaviour:
   minSpawnTime: 0.75
   maxSpawnTime: 3
   minCollectableSpawnTime: 5
+  speedUpConstant: 0.1
   instruct: {fileID: 0}
   title: {fileID: 0}
 --- !u!4 &1855079708

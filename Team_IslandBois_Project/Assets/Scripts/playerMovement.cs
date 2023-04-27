@@ -50,7 +50,7 @@ public class playerMovement : MonoBehaviour{
             screensScript.setGameOverScreen();
             isAlive = false;
         }    
-        }
     }
+}
 
 
